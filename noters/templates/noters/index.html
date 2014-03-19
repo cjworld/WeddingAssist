@@ -1,0 +1,58 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>Noters - Weddingnoter</title>
+        <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    </head>
+    <body ng-app="{% block ng_app %}noterApp{% endblock %}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1>Memos <small> Write down your note here. </small></h1>
+            </div>
+            <div class="panel-body list-group" ng-controller="{% block memos_controller %}MemoListCtrl{% endblock %}">
+                {% block memos_content %}
+                {% verbatim %}
+                <a class="list-group-item col-xs-6 col-sm-3" ng-repeat="memo in memos">
+                    <h4 class="list-group-item-heading"> Title: {{ memo.title }} </h4>
+                    <p class="list-group-item-text">
+                        <b>Author:</b> {{ memo.author }}<br>
+                        <b>Created Datetime:</b> {{ memo.created }}<br>
+                        <b>Message:</b> {{ memo.message }}<br>
+                        <b>Alarm:</b> {{ memo.alarm }}<br>
+                        <b>Alarm Datetime:</b> {{ memo.datetime }}<br>
+                        <b>Notebook:</b> {{ memo.notebook }}<br>
+                        <b>Recipients:</b> {{ memo.recipients }}
+                    </p>
+                </a>
+                {% endverbatim %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1> Notebooks <small> Check your schedules. </small></h1>
+            </div>
+            <div class="panel-body list-group" ng-controller="{% block notebooks_controller %}NotebookListCtrl{% endblock %}">
+                {% block notebooks_content %}
+                {% verbatim %}
+                <a class="list-group-item col-xs-6 col-sm-3" ng-repeat="notebook in notebooks">
+                    <h4 class="list-group-item-heading"> Title: {{ notebook.title }} </h4>
+                    <p class="list-group-item-text">
+                        <b>Owner:</b> {{ notebook.owner }}<br>
+                        <b>Subscription:</b> {{ notebook.subscription }}<br>
+                        <b>Memos:</b> {{ notebook.memos }}<br>
+                        <b>Partners:</b> {{ notebook.partners }}
+                    </p>
+                </a>
+                {% endverbatim %}
+                {% endblock %}
+            </div>
+        </div>
+        <script src="{% static "angular/angular.min.js" %}"></script>
+        <script src="{% static "angular/angular-resource.min.js" %}"></script>
+        <script src="{% static "noters/js/services.js" %}"></script>
+        <script src="{% static "noters/js/controllers.js" %}"></script>
+        <script src="{% static "noters/js/app.js" %}"></script>
+    </body>
+</html>

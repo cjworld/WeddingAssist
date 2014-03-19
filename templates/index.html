@@ -1,0 +1,31 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    </head>
+    <body ng-app="{% block ng_app %}weddingnoterApp{% endblock %}">
+        <div class="content" ng-controller="{% block ng_controller %}MemoListCtrl{% endblock %}">
+            {% block content %}
+            {% verbatim %}
+            <div class="panel" ng-repeat="memo in memos">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title">{{ memo.title }}</h3>
+                    <author class="pull-right">{{ memo.author }}</author>
+                </div>
+                <p class="well">
+                    <b>Created Datetime:</b> {{ memo.created }}<br>
+                    <b>Message:</b> {{ memo.message }}<br>
+                    <b>Alarm:</b> {{ memo.alarm }}<br>
+                    <b>Alarm Datetime:</b> {{ memo.datetime }}<br>
+                    <b>Notebook:</b> {{ memo.notebook }}<br>
+                    <b>Recipients:</b> {{ memo.recipients }}
+                </p>
+            </div>
+            {% endverbatim %}
+            {% endblock %}</div>
+        <script src="{% static "angular/angular.min.js" %}"></script>
+        <script src="{% static "angular/angular-resource.min.js" %}"></script>
+        <script src="{% static "js/script.js" %}"></script>
+    </body>
+</html>
