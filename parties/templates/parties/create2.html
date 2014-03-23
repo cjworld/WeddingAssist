@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Bootstrap 101 Template</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	</head>
+<body ng-app="weddingassist.party">
+<div class="container">
+<form class="form-horizontal" ng-controller="CreateContoller">
+<fieldset>
+	<legend>
+		Create A Webpage for Your Wedding/Banquet
+	</legend>
+	<div class="control-group">
+		<label class="control-label" for="inputTitle">Title</label>
+		<div class="controls">
+			<input type="text" id="inputTitle" placeholder="Title" ng-model="newParty.title">	
+			<span class="help-inline">Naming your wedding/banquet.</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="tAreaSubscription">Subscription</label>
+		<div class="controls">
+			<textarea rows="3" id="tAreaSubscription" ng-model="newParty.subscription"></textarea>
+			<span class="help-inline">Scribe more for your wedding/banquet.</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="inputDate">Date</label>
+		<div class="controls">
+			<input type="text" id="inputDate" placeholder="Date" ng-model="newParty.date">
+			<span class="help-inline">The date for wedding/banquet</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="inputTime">Time</label>
+		<div class="controls">
+			<input type="text" id="inputTime" placeholder="Time" ng-model="newParty.time">
+			<span class="help-inline">The time for wedding/banquet</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="inputLocation">Location</label>
+		<div class="controls">
+			<input type="text" id="inputLocation" placeholder="Location" ng-model="newParty.location">
+			<span class="help-inline">The location for wedding/banquet</span>
+		</div>
+	</div>
+	<!--
+	<div class="control-group">
+		<label class="control-label" for="inputGallery">Gallery</label>
+		<div class="controls">
+			<input type="text" id="inputGallery" placeholder="Gallery">
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<label class="checkbox">
+				<input type="checkbox"> Remind me if any update.
+			</label>
+		</div>
+	</div>
+	-->
+</fieldset>
+<div class="form-actions">
+	<button type="submit" class="btn btn-primary" ng-click="save()">Create</button>
+	<button type="button" class="btn" ng-click="cancel()">Cancel</button>
+</div>
+</form>
+</div>
+
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.3/angular.min.js"></script>
+</body>
+</html>
