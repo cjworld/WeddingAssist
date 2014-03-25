@@ -15,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^users/', include(user_urls, namespace='users')),
     url(r'^noters/', include('noters.urls', namespace='noters')),
+	url(r'^parties/', include('parties.urls', namespace='parties')),
 )

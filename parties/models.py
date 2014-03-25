@@ -15,8 +15,8 @@ class Party(models.Model):
 	datetime = models.DateTimeField(auto_now_add=True)
 	title = models.CharField(max_length=127)
 	subscription = models.TextField(blank=True)
-	date = models.DateField()
-	time = models.TimeField()
+	date = models.DateField(blank=True, null=True)
+	time = models.TimeField(blank=True, null=True)
 	place = models.CharField(max_length=511, blank=True)
 	photos = models.ManyToManyField(Photo, through='PartyPhoto', blank=True, null=True)
 	
