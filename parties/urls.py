@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from rest_framework.urlpatterns import format_suffix_patterns
+from django.views.generic import TemplateView
 from parties import views
 
 photo_urls = format_suffix_patterns(patterns('',
@@ -10,6 +11,7 @@ photo_urls = format_suffix_patterns(patterns('',
 party_urls = format_suffix_patterns(patterns('',
     url(r'^$', views.PartyList.as_view(), name='party-list'),
     url(r'^(?P<pk>[0-9]+)/$', views.PartyDetail.as_view(), name='party-detail'),
+	#url(r'^(?P<pk>[0-9]+)/$', TemplateView.as_view(template_name='parties/party-info2.html'), name='party-detail'),
 ))
 
 message_urls = format_suffix_patterns(patterns('',

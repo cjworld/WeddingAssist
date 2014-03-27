@@ -1,13 +1,16 @@
-﻿<!DOCTYPE html>
+﻿{% load staticfiles %}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Bootstrap 101 Template</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="css/gallery.css" rel="stylesheet" media="screen">
+	<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+	<link href="{% static "parties/css/gallery.css" %}" rel="stylesheet" media="screen">
 </head>
 <body ng-app="weddingassist.party.controllers" data-spy="scroll" data-target=".navbar">
 <div class="container" ng-controller="PartyDetailCtrl">
+{% verbatim %}
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -45,8 +48,8 @@
 				<dd>{{ date }}</dd>
 				<dt>Time</dt>
 				<dd>{{ time }}</dd>
-				<dt>Location</dt>
-				<dd>{{ location }}</dd>
+				<dt>Place</dt>
+				<dd>{{ place }}</dd>
 
 			</dl>
 		</p>
@@ -124,18 +127,19 @@
 		<p>
 			<div class="panel" ng-repeat="message in messages">
 				<div class="panel-heading clearfix">
-					<author class="pull-right">{{ message.author }} @ {{ message.datetime }}</author>
+					<author class="pull-right">{{ message.author.username }} @ {{ message.datetime }}</author>
 				</div>
 				<p class="well">{{ message.body }}</p>
 			</div>
 		</p>
 	</div>
+{% endverbatim %}
 </div>
 <script src="http://code.jquery.com/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/angular.js"></script>
-<script src="js/angular-animate.js"></script>
-<script src="js/angular-touch.js"></script>
-<script src="js/party-controllers.js"></script>
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "angular/angular.js" %}"></script>
+<script src="{% static "angular/angular-animate.js" %}"></script>
+<script src="{% static "angular/angular-touch.js" %}"></script>
+<script src="{% static "parties/js/party-controllers.js" %}"></script>
 </body>
 </html>
