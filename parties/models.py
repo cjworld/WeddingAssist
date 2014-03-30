@@ -5,7 +5,7 @@ class Photo(models.Model):
 	author = models.ForeignKey(User, related_name='photos')
 	title = models.CharField(max_length=127, blank=True)
 	datetime = models.DateTimeField(auto_now_add=True)
-	image = models.ImageField(upload_to="photos")
+	image = models.ImageField(upload_to="images")
 	
 	def __unicode__(self):
 		return '%s, %s, %s, %s' % (self.author, self.title, self.datetime, self.image)

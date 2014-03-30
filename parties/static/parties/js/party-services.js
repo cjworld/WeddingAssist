@@ -1,11 +1,15 @@
-﻿var partyControllers = angular.module('weddingassist.party.controllers', ['ngAnimate', 'ngTouch']);
-
-var partyServices = angular.module('weddingassist.party.services', ['ngResource']);
+﻿var partyServices = angular.module('weddingassist.party.services', ['ngResource']);
  
 partyServices.factory('Party', ['$resource',
 	function($resource){
 		return $resource('phones/:phoneId.json', {}, {
-			query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
+			get: {
+                method:'GET',
+                params:{
+                    phoneId:'phones',
+                    title:
+                }
+            },
 	});
 }]);
 

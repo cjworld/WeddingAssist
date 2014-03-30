@@ -3,15 +3,15 @@ from .models import User, Party, Photo, Message, ParticipationWillingness
 
 class UserSerializer(serializers.ModelSerializer):
 	#parties = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='party-detail', lookup_field='author', required=False)
-	parties = serializers.RelatedField(many=True)
+	#parties = serializers.RelatedField(many=True)
 	
 	class Meta:
 		model = User
-		fields = ('id', 'username', 'first_name', 'last_name', 'parties', )
+		fields = ('id', 'username', 'first_name', 'last_name', )
 	
 class PhotoSerializer(serializers.ModelSerializer):
 	#serializer = PhotoSerializer(data=request.DATA, files=request.FILES)
-	#image = serializers.Field('image.url')
+	image = serializers.Field('image.url')
 
 	def get_validation_exclusions(self):
 		# Need to exclude `author` since we'll add that later based off the request
@@ -53,9 +53,9 @@ class PartySerializer(serializers.ModelSerializer):
 	#messages = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='parties:message-detail', required=False)
 	#participationwillingnesses = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='parties:participationwillingness-detail', required=False)
 	#photos = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='photo-detail', required=False)
-	messages = MessageSerializer(many=True, read_only=True, required=False)
-	participationwillingnesses = ParticipationWillingnessSerializer(many=True, read_only=True, required=False)
-	photos = serializers.RelatedField(many=True)
+	#messages = MessageSerializer(many=True, read_only=True, required=False)
+	#participationwillingnesses = ParticipationWillingnessSerializer(many=True, read_only=True, required=False)
+	photos = PhotoSerializer(many=True, read_only=True, required=False)
 
 	def get_validation_exclusions(self):
 		# Need to exclude `author` since we'll add that later based off the request
@@ -64,6 +64,6 @@ class PartySerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = Party
-		fields = ('id', 'author', 'datetime', 'title', 'subscription', 'date', 'time', 'place', 'photos', 'messages', 'participationwillingnesses')
+		fields = ('id', 'datetime', 'title', 'subscription', 'date', 'time', 'place', 'photos')
 		depth = 2
 
