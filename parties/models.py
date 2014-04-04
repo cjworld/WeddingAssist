@@ -36,13 +36,13 @@ class Message(models.Model):
 	def __unicode__(self):
 		return '%s, %s, %s, %s' % (self.author, self.datetime, self.body, self.party)
 		
-class ParticipationWillingness(models.Model):
-	author = models.ForeignKey(User, related_name='participationwillingnesses')
+class Willingness(models.Model):
+	author = models.ForeignKey(User, related_name='willingnesses')
 	participation = models.BooleanField()
 	invitation = models.BooleanField()
 	host = models.BooleanField()
 	vegetarian = models.BooleanField()
-	party = models.ForeignKey(Party, related_name='participationwillingnesses')
+	party = models.ForeignKey(Party, related_name='willingnesses')
 	
 	def __unicode__(self):
 		return '%s, %s, %s, %s, %s, %s' % (self.author, self.participation, self.invitation, self.host, self.vegetarian, self.party)
