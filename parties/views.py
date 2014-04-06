@@ -10,11 +10,11 @@ class PhotoList(generics.ListCreateAPIView):
     permission_classes = [
         permissions.AllowAny
     ]
-	
+    
     def pre_save(self, obj):
         obj.author = self.request.user
         return super(PhotoList, self).pre_save(obj)
-	
+    
 class PhotoDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Photo
     serializer_class = PhotoSerializer
@@ -28,7 +28,7 @@ class UserPhotoList(generics.ListAPIView):
     permission_classes = [
         permissions.AllowAny
     ]
-	
+    
     def get_queryset(self):
         queryset = super(UserPhotoList, self).get_queryset()
         return queryset.filter(author__username=self.request.user.username)
@@ -43,7 +43,7 @@ class PartyList(generics.ListCreateAPIView):
     def pre_save(self, obj):
         obj.author = self.request.user
         return super(PartyList, self).pre_save(obj)
-	
+    
 class PartyDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Party
     serializer_class = PartySerializer
@@ -79,7 +79,7 @@ class UserPartyList(generics.ListAPIView):
     permission_classes = [
         permissions.AllowAny
     ]
-	
+    
     def get_queryset(self):
         queryset = super(UserPartyList, self).get_queryset()
         return queryset.filter(author__username=self.request.user.username)
@@ -90,11 +90,11 @@ class MessageList(generics.ListCreateAPIView):
     permission_classes = [
         permissions.AllowAny
     ]
-	
+    
     def pre_save(self, obj):
         obj.author = self.request.user
         return super(MessageList, self).pre_save(obj)
-	
+    
 class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Message
     serializer_class = MessageSerializer
@@ -108,7 +108,7 @@ class UserMessageList(generics.ListAPIView):
     permission_classes = [
         permissions.AllowAny
     ]
-	
+    
     def get_queryset(self):
         queryset = super(UserMessageList, self).get_queryset()
         return queryset.filter(author__username=self.request.user.username)
@@ -119,11 +119,11 @@ class WillingnessList(generics.ListCreateAPIView):
     permission_classes = [
         permissions.AllowAny
     ]
-	
+    
     def pre_save(self, obj):
         obj.author = self.request.user
         return super(WillingnessList, self).pre_save(obj)
-	
+    
 class WillingnessDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Willingness
     serializer_class = WillingnessSerializer
@@ -137,7 +137,7 @@ class UserWillingnessList(generics.ListAPIView):
     permission_classes = [
         permissions.AllowAny
     ]
-	
+    
     def get_queryset(self):
         queryset = super(UserWillingnessList, self).get_queryset()
         return queryset.filter(author__username=self.request.user.username)
