@@ -1,5 +1,26 @@
 var partyControllers = angular.module('partyControllers', ['ngAnimate', 'ngTouch']);
 
+partyControllers.controller('UserPartyListCtrl', ['$scope', '$http', function($scope, $http) {
+        $http.get('/parties/api/user/parties/').success(function(data){
+            $scope.partyList = data;
+        });
+    }
+]);
+
+partyControllers.controller('UserMessageListCtrl', ['$scope', '$http', function($scope, $http) {
+        $http.get('/parties/api/user/messages/').success(function(data){
+            $scope.messageList = data;
+        });
+    }
+]);
+
+partyControllers.controller('UserWillingnessListCtrl', ['$scope', '$http', function($scope, $http) {
+        $http.get('/parties/api/user/willingnesses/').success(function(data){
+            $scope.willingnessList = data;
+        });
+    }
+]);
+
 partyControllers.controller('PartyListCtrl', ['$scope', '$http', function($scope, $http) {
         $http.get('/parties/parties/list/').success(function(data){
             $scope.parties = data;
@@ -20,8 +41,6 @@ partyControllers.controller('PartyDetailCtrl', ['$scope', '$http', '$routeParams
             $scope.messages = data.messages;
         });
         
-		/*
-		
 		$scope.title = "Jerry & Yuchen's Wedding Banquet";
 		$scope.subscription = "After a long run for eight years, we are decided to get married. All of my friends are welcome to my wedding party and banquet.";
 		$scope.date = "2013-10-26";
@@ -48,7 +67,7 @@ partyControllers.controller('PartyDetailCtrl', ['$scope', '$http', '$routeParams
 			{'author':{'username':'lien'}, 'datetime':'2013-11-12 08:08:08', 'body':'cowbey'},
 			{'author':{'username':'lia'}, 'datetime':'2013-11-10 18:18:18', 'body':'babe'}	
 		];
-         */
+        
 		// initial image index
 		$scope._Index = 0;
 
@@ -73,3 +92,4 @@ partyControllers.controller('PartyDetailCtrl', ['$scope', '$http', '$routeParams
 		};
 	}
 ]);
+	

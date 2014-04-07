@@ -25,6 +25,7 @@ class PhotoSerializer(serializers.ModelSerializer):
         
 class MessageSerializer(serializers.ModelSerializer):
     author = UserSerializer(required=False)
+    url = serializers.CharField(source='get_absolute_url', read_only=True)
     
     def get_validation_exclusions(self):
         # Need to exclude `author` since we'll add that later based off the request
@@ -33,10 +34,12 @@ class MessageSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Message
-        fields = ('id', 'author', 'datetime', 'body', 'party', )
+        fields = ('url', 'id', 'author', 'datetime', 'body', 'party', )
+        depth = 2
         
 class WillingnessSerializer(serializers.ModelSerializer):
     author = UserSerializer(required=False)
+    url = serializers.CharField(source='get_absolute_url', read_only=True)
 
     def get_validation_exclusions(self):
         # Need to exclude `author` since we'll add that later based off the request
@@ -45,13 +48,15 @@ class WillingnessSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Willingness
-        fields = ('id', 'author', 'participation', 'invitation', 'host', 'vegetarian', 'party', )
+        fields = ('url', 'id', 'author', 'participation', 'invitation', 'host', 'vegetarian', 'party', )
+        depth = 2
         
 class PartySerializer(serializers.ModelSerializer):
     author = UserSerializer(required=False)
     date = serializers.DateField(format="%Y-%m-%d", input_formats=["%Y-%m-%d"], required=False)
     time = serializers.TimeField(format="%H:%M:%S", input_formats=["%H:%M:%S"], required=False)
     photos = PhotoSerializer(many=True, read_only=True, required=False)
+    url = serializers.CharField(source='get_absolute_url', read_only=True)
 
     def get_validation_exclusions(self):
         # Need to exclude `author` since we'll add that later based off the request
@@ -60,6 +65,6 @@ class PartySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Party
-        fields = ('id', 'author', 'datetime', 'title', 'subscription', 'date', 'time', 'place', 'photos')
+        fields = ('url', 'id', 'author', 'datetime', 'title', 'subscription', 'date', 'time', 'place', 'photos')
         depth = 2
 

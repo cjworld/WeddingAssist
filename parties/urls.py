@@ -47,6 +47,6 @@ api_urlpatterns = patterns('',
 )
 
 urlpatterns = patterns('',
-    #url(r'^$', TemplateView.as_view(template_name='parties/party-base.html'), name='base'),
+    url(r'^$', TemplateView.as_view(template_name='parties/party-base.html'), name='base'),
     url(r'^api/', include(api_urlpatterns)),
 )

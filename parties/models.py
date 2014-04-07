@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
     
 class Photo(models.Model):
@@ -22,6 +23,9 @@ class Party(models.Model):
     
     def __unicode__(self):
         return '%s, %s, %s, %s, %s, %s, %s, %s' % (self.author, self.datetime, self.title, self.subscription, self.date, self.time, self.place, self.photos)
+
+    def get_absolute_url(self):
+        return reverse('parties:party-detail', args=[str(self.id)])
     
 class PartyPhoto(models.Model):
     photo = models.ForeignKey(Photo)
@@ -35,6 +39,9 @@ class Message(models.Model):
     
     def __unicode__(self):
         return '%s, %s, %s, %s' % (self.author, self.datetime, self.body, self.party)
+
+    def get_absolute_url(self):
+        return reverse('parties:message-detail', args=[str(self.id)])
         
 class Willingness(models.Model):
     author = models.ForeignKey(User, related_name='willingnesses')
@@ -46,4 +53,7 @@ class Willingness(models.Model):
     
     def __unicode__(self):
         return '%s, %s, %s, %s, %s, %s' % (self.author, self.participation, self.invitation, self.host, self.vegetarian, self.party)
+
+    def get_absolute_url(self):
+        return reverse('parties:willingness-detail', args=[str(self.id)])
     

@@ -1,2 +1,22 @@
-<a href="#/party-list">party-list</a>
-<a href="#/party-detail/1">party-detail</a>
+{% verbatim %}
+<div class="page-header" ng-controller="UserPartyListCtrl">
+	<h1><a href="#/userparty-list/">Party</a> <small>The List of Your Parties</small></h1>
+	<ul class="list-unstyled" ng-repeat="party in partyList">
+		<li><a href="#/party-detail/{{ party.id }}">{{ party.title }} @ {{ party.date }} {{ party.time }} @ {{ party.place }}</a></li>
+	</ul>
+</div>
+
+<div class="page-header" ng-controller="UserMessageListCtrl">
+	<h1><a href="#/usermessage-list/">Messages</a> <small>The List of Your Messages</small></h1>
+	<ul class="list-unstyled" ng-repeat="message in messageList">
+		<li><a href="#/message-detail/{{ message.id }}">{{ message.body }} by {{ message.author.username }} @ {{ message.datetime }}</a></li>
+	</ul>
+</div>
+
+<div class="page-header" ng-controller="UserWillingnessListCtrl">
+	<h1><a href="#/userwillingness-list/">Willingness</a> <small>The List of Your Willingness</small></h1>
+	<ul class="list-unstyled" ng-repeat="willingness in willingnessList">
+		<li><a href="#/willingness-detail/{{ willingness.id }}">{{ willingness.party.title }}</a></li>
+	</ul>
+</div>
+{% endverbatim %}
