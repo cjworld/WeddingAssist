@@ -1,0 +1,8 @@
+{% verbatim %}
+<div class="page-header">
+	<h1><a href="#/usermessage-list/">Messages</a> <small>The List of Your Messages</small></h1>
+	<ul class="list-unstyled" ng-repeat="message in messageList">
+		<li><a href="#/message-detail/{{ message.id }}">{{ message.body }} by {{ message.author.username }} @ {{ message.datetime }}</a></li>
+	</ul>
+</div>
+{% endverbatim %}

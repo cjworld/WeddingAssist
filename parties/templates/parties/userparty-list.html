@@ -1,0 +1,8 @@
+{% verbatim %}
+<div class="page-header">
+	<h1><a href="#/userparty-list/">Party</a> <small>The List of Your Parties</small></h1>
+	<ul class="list-unstyled" ng-repeat="party in partyList">
+		<li><a href="#/party-detail/{{ party.id }}">{{ party.title }} @ {{ party.date }} {{ party.time }} @ {{ party.place }}</a></li>
+	</ul>
+</div>
+{% endverbatim %}

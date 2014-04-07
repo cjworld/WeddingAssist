@@ -7,9 +7,32 @@ partyControllers.controller('UserPartyListCtrl', ['$scope', '$http', function($s
     }
 ]);
 
+partyControllers.controller('PartyDetailCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+        $http.get('/parties/api/parties/' + $routeParams.partyId).success(function(data){
+            $scope.author = data.author;
+			$scope.date = data.date;
+			$scope.time = data.time;
+			$scope.title = data.title;
+			$scope.subscription = data.subscription;
+			$scope.place = data.place;
+			$scope.photos = data.photos;
+        });
+    }
+]);
+
 partyControllers.controller('UserMessageListCtrl', ['$scope', '$http', function($scope, $http) {
         $http.get('/parties/api/user/messages/').success(function(data){
             $scope.messageList = data;
+        });
+    }
+]);
+
+partyControllers.controller('MessageDetailCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+        $http.get('/parties/api/messages/' + $routeParams.messageId).success(function(data){
+            $scope.author = data.author;
+			$scope.datetime = data.datetime;
+			$scope.party = data.party;
+			$scope.body = data.body;
         });
     }
 ]);
@@ -21,6 +44,18 @@ partyControllers.controller('UserWillingnessListCtrl', ['$scope', '$http', funct
     }
 ]);
 
+partyControllers.controller('WillingnessDetailCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+        $http.get('/parties/api/willingnesses/' + $routeParams.willingnessId).success(function(data){
+            $scope.author = data.author;
+			$scope.party = data.party;
+			$scope.participation = data.participation;
+			$scope.invitation = data.invitation;
+			$scope.host = data.host;
+			$scope.vegetarian = data.vegetarian;
+        });
+    }
+]);
+
 partyControllers.controller('PartyListCtrl', ['$scope', '$http', function($scope, $http) {
         $http.get('/parties/parties/list/').success(function(data){
             $scope.parties = data;
@@ -28,7 +63,7 @@ partyControllers.controller('PartyListCtrl', ['$scope', '$http', function($scope
     }
 ]);
 
-
+/*
 partyControllers.controller('PartyDetailCtrl', ['$scope', '$http', '$routeParams',
 	function($scope, $http, $routeParams) {
         $http.get('/parties/parties/' + $routeParams.partyId).success(function(data){
@@ -92,4 +127,4 @@ partyControllers.controller('PartyDetailCtrl', ['$scope', '$http', '$routeParams
 		};
 	}
 ]);
-	
+	*/

@@ -4,9 +4,13 @@ from django.views.generic import TemplateView
 from parties import views
 
 party_templates_urls = patterns('',
-    url(r'^party-index.html$', TemplateView.as_view(template_name='parties/party-index.html')),
-    url(r'^party-list.html$', TemplateView.as_view(template_name='parties/party-list.html')),
-    url(r'^party-detail.html$', TemplateView.as_view(template_name='parties/party-detail.html')),
+	url(r'^index.html$', TemplateView.as_view(template_name='parties/index.html')),
+    url(r'^userparty-list.html$', TemplateView.as_view(template_name='parties/userparty-list.html')),
+	url(r'^party-detail.html$', TemplateView.as_view(template_name='parties/party-detail.html')),
+    url(r'^usermessage-list.html$', TemplateView.as_view(template_name='parties/usermessage-list.html')),
+	url(r'^message-detail.html$', TemplateView.as_view(template_name='parties/message-detail.html')),
+    url(r'^userwillingness-list.html$', TemplateView.as_view(template_name='parties/userwillingness-list.html')),
+	url(r'^willingness-detail.html$', TemplateView.as_view(template_name='parties/willingness-detail.html')),
 )
 
 user_urls = patterns('',
