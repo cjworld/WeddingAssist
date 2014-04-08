@@ -1,65 +1,31 @@
 var partyControllers = angular.module('partyControllers', ['ngAnimate', 'ngTouch']);
 
-partyControllers.controller('UserPartyListCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('/parties/api/user/parties/').success(function(data){
-            $scope.partyList = data;
-        });
+partyControllers.controller('UserOverviewCtrl', ['$scope', 'UserParty', 'UserMessage', 'UserWillingness', function($scope, UserParty, UserMessage, UserWillingness) {
+		$scope.partyList = UserParty.query();
+		$scope.messageList = UserMessage.query();
+		$scope.willingnessList = UserWillingness.query();
     }
 ]);
 
-partyControllers.controller('PartyDetailCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-        $http.get('/parties/api/parties/' + $routeParams.partyId).success(function(data){
-            $scope.author = data.author;
-			$scope.date = data.date;
-			$scope.time = data.time;
-			$scope.title = data.title;
-			$scope.subscription = data.subscription;
-			$scope.place = data.place;
-			$scope.photos = data.photos;
-        });
+partyControllers.controller('PartyDetailCtrl', ['$scope', '$http', '$routeParams', 'Party', function($scope, $http, $routeParams, Party) {
+		$scope.party = Party.get({partyId: $routeParams.partyId});
     }
 ]);
 
-partyControllers.controller('UserMessageListCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('/parties/api/user/messages/').success(function(data){
-            $scope.messageList = data;
-        });
+partyControllers.controller('MessageDetailCtrl', ['$scope', '$http', '$routeParams', 'Message', function($scope, $http, $routeParams, Message) {
+		$scope.message = Message.get({messageId: $routeParams.messageId});
     }
 ]);
 
-partyControllers.controller('MessageDetailCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-        $http.get('/parties/api/messages/' + $routeParams.messageId).success(function(data){
-            $scope.author = data.author;
-			$scope.datetime = data.datetime;
-			$scope.party = data.party;
-			$scope.body = data.body;
-        });
+partyControllers.controller('WillingnessDetailCtrl', ['$scope', '$http', '$routeParams', 'Willingness', function($scope, $http, $routeParams, Willingness) {
+		$scope.willingness = Willingness.get({willingnessId: $routeParams.willingnessId});
     }
 ]);
 
-partyControllers.controller('UserWillingnessListCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('/parties/api/user/willingnesses/').success(function(data){
-            $scope.willingnessList = data;
-        });
-    }
-]);
-
-partyControllers.controller('WillingnessDetailCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-        $http.get('/parties/api/willingnesses/' + $routeParams.willingnessId).success(function(data){
-            $scope.author = data.author;
-			$scope.party = data.party;
-			$scope.participation = data.participation;
-			$scope.invitation = data.invitation;
-			$scope.host = data.host;
-			$scope.vegetarian = data.vegetarian;
-        });
-    }
-]);
-
-partyControllers.controller('PartyListCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('/parties/parties/list/').success(function(data){
-            $scope.parties = data;
-        });
+partyControllers.controller('PartyOverviewCtrl', ['$scope', '$http', '$routeParams', 'Party', 'PartyMessage', 'PartyWillingness', function($scope, $http, $routeParams, Party, PartyMessage, PartyWillingness) {
+		$scope.party = Party.get({partyId: $routeParams.partyId});
+		$scope.messageList = PartyMessage.query({partyId: $routeParams.partyId});
+		$scope.willingnessList = PartyWillingness.query({partyId: $routeParams.partyId});
     }
 ]);
 

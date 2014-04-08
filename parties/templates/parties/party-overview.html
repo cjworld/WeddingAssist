@@ -1,0 +1,73 @@
+{% verbatim %}
+	<h2>Party</h2>
+	<p>The Information of Your Party</p>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<dl class="dl-horizontal">
+				<dt>title</dt>
+				<dd>{{ party.title }}</dd>
+				<dt>subscription</dt>
+				<dd>{{ party.subscription }}</dd>
+				<dt>date</dt>
+				<dd>{{ party.date }}</dd>
+				<dt>time</dt>
+				<dd>{{ party.time }}</dd>
+				<dt>place</dt>
+				<dd>{{ party.place }}</dd>
+				<dt>vegetarian</dt>
+				<dd>{{ party.vegetarian }}</dd>
+			</dl>
+		</div>
+	</div>
+	
+	<h2>Messages</h2>
+	<p>The List of Messages For Your Party</p>
+	<div class="panel panel-default">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>user</th>
+					<th>datetime</th>
+					<th>body</th>
+					<th>link</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="message in messageList">
+				<tr>
+					<td>{{ message.author.username }}</td>
+					<td>{{ message.datetime }}</td>
+					<td>{{ message.body }}</td>
+					<td><a href="#/message-detail/{{ message.id }}"> more </a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<h2>Willingness</h2>
+	<p>The List of Willingness For Your Party</p>
+	<div class="panel panel-default">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>user</th>
+					<th>participation</th>
+					<th>vegetarian</th>
+					<th>invitation</th>
+					<th>host</th>
+					<th>link</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="willingness in willingnessList">
+				<tr>
+					<td>{{ willingness.author.username }}</td>
+					<td>{{ willingness.participation }}</td>
+					<td>{{ willingness.vegetarian }}</td>
+					<td>{{ willingness.invitation }}</td>
+					<td>{{ willingness.host }}</td>
+					<td><a href="#/willingness-detail/{{ willingness.id }}"> more </a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+{% endverbatim %}

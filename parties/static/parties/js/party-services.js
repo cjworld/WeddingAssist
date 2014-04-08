@@ -1,29 +1,102 @@
-﻿var partyServices = angular.module('weddingassist.party.services', ['ngResource']);
- 
-partyServices.factory('Party', ['$resource',
+﻿var partyServices = angular.module('partyServices', ['ngResource']);
+
+partyServices.factory('UserParty', ['$resource',
 	function($resource){
-		return $resource('phones/:phoneId.json', {}, {
-			get: {
+		return $resource('api/user/parties/', {}, {
+			query: {
                 method:'GET',
-                params:{
-                    phoneId:'phones',
-                    title:
-                }
-            },
+                params:{},
+				isArray:true
+            }
 	});
 }]);
 
+partyServices.factory('UserMessage', ['$resource',
+	function($resource){
+		return $resource('api/user/messages/', {}, {
+			query: {
+                method:'GET',
+                params:{},
+				isArray:true
+            }
+	});
+}]);
+
+partyServices.factory('UserWillingness', ['$resource',
+	function($resource){
+		return $resource('api/user/willingnesses/', {}, {
+			query: {
+                method:'GET',
+                params:{},
+				isArray:true
+            }
+	});
+}]);
+
+partyServices.factory('PartyMessage', ['$resource',
+	function($resource){
+		return $resource('api/parties/:partyId/messages/', {}, {
+			query: {
+                method:'GET',
+                params:{},
+				isArray:true
+            }
+	});
+}]);
+
+partyServices.factory('PartyWillingness', ['$resource',
+	function($resource){
+		return $resource('api/parties/:partyId/willingnesses/', {}, {
+			query: {
+                method:'GET',
+                params:{},
+				isArray:true
+            }
+	});
+}]);
+
+partyServices.factory('Party', ['$resource',
+	function($resource){
+		return $resource('api/parties/:partyId/', {}, {
+			get: {
+                method:'GET',
+                params:{}
+            }
+	});
+}]);
+
+partyServices.factory('Message', ['$resource',
+	function($resource){
+		return $resource('api/messages/:messageId/', {}, {
+			get: {
+                method:'GET',
+                params:{}
+            }
+	});
+}]);
+
+partyServices.factory('Willingness', ['$resource',
+	function($resource){
+		return $resource('api/willingnesses/:willingnessId/', {}, {
+			get: {
+                method:'GET',
+                params:{}
+            }
+	});
+}]);
+
+/*
 partyControllers.controller('PartyDetailCtrl', ['$scope', '$http',
 	function($scope, $http) {
-		/*
-		$http.get('party/' + $routeParams.partyId).success(function(data){
-			$scope.title = data.title;
-			$scope.subscription = data.subscription;
-			$scope.date = data.date;
-			$scope.time = data.time;
-			$scope.location = data.location;
-		});
-		*/
+		
+		//$http.get('party/' + $routeParams.partyId).success(function(data){
+		//	$scope.title = data.title;
+		//	$scope.subscription = data.subscription;
+		//	$scope.date = data.date;
+		//	$scope.time = data.time;
+		//	$scope.location = data.location;
+		//});
+		
 		$scope.title = "Jerry & Yuchen's Wedding Banquet";
 		$scope.subscription = "After a long run for eight years, we are decided to get married. All of my friends are welcome to my wedding party and banquet.";
 		$scope.date = "2013-10-26";
@@ -75,3 +148,4 @@ partyControllers.controller('PartyDetailCtrl', ['$scope', '$http',
 		};
 	}
 ]);
+*/
