@@ -31,6 +31,7 @@ party_urls = format_suffix_patterns(patterns('',
     url(r'^(?P<pk>[0-9]+)/$', views.PartyDetail.as_view(), name='party-detail'),
     url(r'^(?P<pk>[0-9]+)/messages/$', views.PartyMessageList.as_view(), name='partymessage-list'),
     url(r'^(?P<pk>[0-9]+)/willingnesses/$', views.PartyWillingnessList.as_view(), name='partywillingness-list'),
+	url(r'^(?P<pk>[0-9]+)/photos/$', views.PartyPhotoList.as_view(), name='partyphoto-list'),
 ))
 
 message_urls = format_suffix_patterns(patterns('',

@@ -55,6 +55,17 @@ partyServices.factory('PartyWillingness', ['$resource',
 	});
 }]);
 
+partyServices.factory('PartyPhotos', ['$resource',
+	function($resource){
+		return $resource('api/parties/:partyId/photos/', {}, {
+			query: {
+                method:'GET',
+                params:{},
+				isArray:true
+            }
+	});
+}]);
+
 partyServices.factory('Party', ['$resource',
 	function($resource){
 		return $resource('api/parties/:partyId/', {}, {

@@ -21,7 +21,8 @@ class PhotoSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Photo
-        fields = ('id', 'author', 'title', 'image', )
+        fields = ('url', 'id', 'author', 'title', 'image', )
+        depth = 2
         
 class MessageSerializer(serializers.ModelSerializer):
     author = UserSerializer(required=False)

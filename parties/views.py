@@ -72,6 +72,22 @@ class PartyWillingnessList(generics.ListAPIView):
     def get_queryset(self):
         queryset = super(PartyWillingnessList, self).get_queryset()
         return queryset.filter(party__pk=self.kwargs.get('pk'))
+		
+class PartyPhotoList(generics.ListAPIView):
+    model = Photo
+    serializer_class = PhotoSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    
+    def get_queryset(self):
+        queryset = super(PartyPhotoList, self).get_queryset()
+        return queryset.filter(party__pk=self.kwargs.get('pk'))
+	'''
+    def pre_save(self, obj):
+        obj.author = self.request.user
+        return super(PartyList, self).pre_save(obj)
+	'''
 
 class UserPartyList(generics.ListAPIView):
     model = Party

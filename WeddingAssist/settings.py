@@ -103,5 +103,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-MEDIA_URL = '/userdata/'
+MEDIA_URL = '/media/'
 
